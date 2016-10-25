@@ -56,7 +56,13 @@ def main():
         glove_model.add_dictionary(dictionary=dictionary)
         glove_model.save(FITTED_MODEL_FILENAME)
 
-    print(glove_model.most_similar('python'))
+    graph_positions = {}
+    for vertex_idx, vertex_name in glove_model.inverse_dictionary.items():
+        vertex_pos = tuple(glove_model.word_vectors[vertex_idx])
+        graph_positions[vertex_name] = vertex_pos
+
+
+
     pass
 
 if __name__ == '__main__':
